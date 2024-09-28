@@ -1,22 +1,75 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "description": "Pie chart displaying male and female data from the gender dataset.",
+  "description": "Pie chart showing the distribution of Male, Female, and Other using external data.",
   "data": {
-    "url": "path_to_your_gender_data.csv"
+    "url": "https://raw.githubusercontent.com/hxuul/FIT3179-VIS-2/refs/heads/main/Pie%20Chart/Australia_data.csv"
   },
+  "width": 900,
+  "height": 750,
+  "params": [
+    {
+      "name": "payment_type_selection",
+      "bind": {
+        "input": "select",
+        "options": [
+          null,
+          "ABSTUDY (Living Allowance)",
+          "ABSTUDY (Non-Living Allowance)",
+          "Age Pension",
+          "Austudy",
+          "Carer Allowance",
+          "Carer Allowance (Child Health Care Card only)",
+          "Carer Payment",
+          "Commonwealth Seniors Health Card",
+          "Disability Support Pension",
+          "Health Care Card",
+          "JobSeeker Payment",
+          "Low Income Card",
+          "Parenting Payment Partnered",
+          "Parenting Payment Single",
+          "Pension Concession Card",
+          "Special Benefit",
+          "Youth Allowance (other)",
+          "Youth Allowance (student and apprentice)"
+        ],
+        "labels": [
+          "Show All",
+          "ABSTUDY (Living Allowance)",
+          "ABSTUDY (Non-Living Allowance)",
+          "Age Pension",
+          "Austudy",
+          "Carer Allowance",
+          "Carer Allowance (Child Health Care Card only)",
+          "Carer Payment",
+          "Commonwealth Seniors Health Card",
+          "Disability Support Pension",
+          "Health Care Card",
+          "JobSeeker Payment",
+          "Low Income Card",
+          "Parenting Payment Partnered",
+          "Parenting Payment Single",
+          "Pension Concession Card",
+          "Special Benefit",
+          "Youth Allowance (other)",
+          "Youth Allowance (student and apprentice)"
+        ],
+        "name": "Payment Type Selection: "
+      }
+    }
+  ],
+  
   "transform": [
     {
       "fold": ["Male", "Female"],
       "as": ["Gender", "value"]
+    },
+    {
+      "filter": "payment_type_selection == null || datum['Payment type'] == payment_type_selection"
     }
   ],
   "mark": "arc",
   "encoding": {
     "theta": {"field": "value", "type": "quantitative"},
     "color": {"field": "Gender", "type": "nominal"}
-  },
-  "tooltip": [
-    {"field": "Gender", "type": "nominal"},
-    {"field": "value", "type": "quantitative"}
-  ]
+  }
 }
