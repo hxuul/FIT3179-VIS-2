@@ -2,7 +2,7 @@
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "description": "Pie chart showing the distribution of Male, Female, and Other using external data.",
   "data": {
-    "url": "https://raw.githubusercontent.com/hxuul/FIT3179-VIS-2/refs/heads/main/Pie%20Chart/Australia_data.csv"
+    "url": "https://raw.githubusercontent.com/hxuul/FIT3179-VIS-2/refs/heads/main/Pie%20Chart/Victoria_data.csv"
   },
   "width": 900,
   "height": 750,
@@ -12,7 +12,7 @@
       "bind": {
         "input": "select",
         "options": [
-          null,
+          "Total",
           "ABSTUDY (Living Allowance)",
           "ABSTUDY (Non-Living Allowance)",
           "Age Pension",
