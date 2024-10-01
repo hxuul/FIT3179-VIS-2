@@ -12,7 +12,7 @@
       "bind": {
         "input": "select",
         "options": [
-          "Total",
+          "All Payments",
           "ABSTUDY (Living Allowance)",
           "ABSTUDY (Non-Living Allowance)",
           "Age Pension",
