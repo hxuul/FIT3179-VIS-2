@@ -1,0 +1,208 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "data": {
+    "url": "https://raw.githubusercontent.com/hxuul/FIT3179-VIS-2/refs/heads/main/map2/map2.csv"
+  },
+  "vconcat": [
+    {
+      "_comment": "this is the world map section",
+      "width": "container",
+      "height": 400,
+      "title": "Earthquakes above a magnitude of 5 (2000-2021)",
+      "projection": {"type": "equalEarth", "rotate": [-150, 0, 0]},
+      "layer": [
+        {
+          "_comment": "Layer for countries",
+          "data": {
+            "url": "https://raw.githubusercontent.com/FIT3179/Vega-Lite/main/2_symbol_map/js/ne_110m_admin_0_countries.topojson",
+            "format": {
+              "type": "topojson",
+              "feature": "ne_110m_admin_0_countries"
+            }
+          },
+          "transform": [
+            {"calculate": "'Data Not Available ' + datum.properties.NAME", "as": "note"}
+          ],
+          "mark": {"type": "geoshape", "fill": "lightgray", "stroke": "white"},
+          "encoding": {
+            "tooltip": {
+              "field": "note"
+            }
+          }
+        },
+
+        
+
+        {
+          "_comment": "Layer for actual continent colors",
+
+
+
+          "data": {
+            "url": "https://raw.githubusercontent.com/FIT3179/Vega-Lite/main/2_symbol_map/js/ne_110m_admin_0_countries.topojson",
+            "format": {
+              "type": "topojson",
+              "feature": "ne_110m_admin_0_countries"
+            }
+          },
+          "transform": [
+            {
+              "lookup": "properties.NAME",
+              "from":{
+                "data":{
+                    "url": "https://raw.githubusercontent.com/hxuul/FIT3179-VIS-2/refs/heads/main/map2/map2.csv",
+                    "format":{
+                      "type": "csv"
+                    }},
+                "key": "Country of Birth",
+                "fields": [
+                  "Country of Birth",
+                  "ABSTUDY (Living allowance)",
+                  "ABSTUDY (Non-living allowance)",
+                  "Age Pension",
+                  "Austudy",
+                  "Carer Allowance",
+                  "Carer Allowance (Child Health Care Card only)",
+                  "Carer Payment",
+                  "Commonwealth Rent Assistance",
+                  "Commonwealth Seniors Health Card",
+                  "Disability Support Pension",
+                  "Family Tax Benefit A",
+                  "Family Tax Benefit B",
+                  "Health Care Card",
+                  "JobSeeker Payment",
+                  "Low Income Card",
+                  "Parenting Payment Partnered",
+                  "Parenting Payment Single",
+                  "Pension Concession Card",
+                  "Special Benefit",
+                  "Youth Allowance (other)",
+                  "Youth Allowance (student and apprentice)"
+                  ]
+                }
+            },
+            {
+              "calculate": "datum['ABSTUDY (Living allowance)'] + datum['ABSTUDY (Non-living allowance)'] + datum['Age Pension'] + datum['Austudy'] + datum['Carer Allowance'] + datum['Carer Allowance (Child Health Care Card only)'] + datum['Carer Payment'] + datum['Commonwealth Rent Assistance'] + datum['Commonwealth Seniors Health Card'] + datum['Disability Support Pension'] + datum['Family Tax Benefit A'] + datum['Family Tax Benefit B'] + datum['Health Care Card'] + datum['JobSeeker Payment'] + datum['Low Income Card'] + datum['Parenting Payment Partnered'] + datum['Parenting Payment Single'] + datum['Pension Concession Card'] + datum['Special Benefit'] + datum['Youth Allowance (other)'] + datum['Youth Allowance (student and apprentice)']",
+              "as": "Total Count"
+            },
+            {
+              "filter": "datum['Country of Birth'] != null"
+            }
+          ],
+          "mark": {"type": "geoshape","stroke": "black","strokeWidth": 0.2,"fill":"black"},
+          "encoding":{
+            "tooltip": [
+              {"field": "Country of Birth", "type": "nominal", "title": "Country"},
+              {"field": "ABSTUDY (Living allowance)", "type": "quantitative", "title": "ABSTUDY (Living allowance)"},
+              {"field": "ABSTUDY (Non-living allowance)", "type": "quantitative", "title": "ABSTUDY (Non-living allowance)"},
+              {"field": "Age Pension", "type": "quantitative", "title": "Age Pension"},
+              {"field": "Austudy", "type": "quantitative", "title": "Austudy"},
+              {"field": "Carer Allowance", "type": "quantitative", "title": "Carer Allowance"},
+              {"field": "Carer Allowance (Child Health Care Card only)", "type": "quantitative", "title": "Carer Allowance (Child Health Care Card only)"},
+              {"field": "Carer Payment", "type": "quantitative", "title": "Carer Payment"},
+              {"field": "Commonwealth Rent Assistance", "type": "quantitative", "title": "Commonwealth Rent Assistance"},
+              {"field": "Commonwealth Seniors Health Card", "type": "quantitative", "title": "Commonwealth Seniors Health Card"},
+              {"field": "Disability Support Pension", "type": "quantitative", "title": "Disability Support Pension"},
+              {"field": "Family Tax Benefit A", "type": "quantitative", "title": "Family Tax Benefit A"},
+              {"field": "Family Tax Benefit B", "type": "quantitative", "title": "Family Tax Benefit B"},
+              {"field": "Health Care Card", "type": "quantitative", "title": "Health Care Card"},
+              {"field": "JobSeeker Payment", "type": "quantitative", "title": "JobSeeker Payment"},
+              {"field": "Low Income Card", "type": "quantitative", "title": "Low Income Card"},
+              {"field": "Parenting Payment Partnered", "type": "quantitative", "title": "Parenting Payment Partnered"},
+              {"field": "Parenting Payment Single", "type": "quantitative", "title": "Parenting Payment Single"},
+              {"field": "Pension Concession Card", "type": "quantitative", "title": "Pension Concession Card"},
+              {"field": "Special Benefit", "type": "quantitative", "title": "Special Benefit"},
+              {"field": "Youth Allowance (other)", "type": "quantitative", "title": "Youth Allowance (other)"},
+              {"field": "Youth Allowance (student and apprentice)", "type": "quantitative", "title": "Youth Allowance (student and apprentice)"}
+            ]
+          }
+        },
+
+
+
+
+
+
+
+        {
+          "_comment": "Layer for oceans",
+          "data": {
+            "url": "https://raw.githubusercontent.com/FIT3179/Vega-Lite/main/7_others/oceans.topojson",
+            "format": {"type": "topojson", "feature": "oceans"}
+          },
+          "mark": {"type": "geoshape", "fill": "skyblue"}
+        },
+
+        
+
+
+        {
+          "_comment": "Layer for graticules",
+          "data": {
+            "url": "https://raw.githubusercontent.com/FIT3179/Vega-Lite/main/2_symbol_map/js/WorldMapWithGraticules.topojson",
+            "format": {"type": "topojson", "feature": "ne_110m_graticules_30"}
+          },
+          "mark": {"type": "geoshape", "fill": null, "stroke": "lightgray"}
+        }
+      ]
+    },
+
+
+
+    {
+      "width": "container",
+      "height": 60,
+      "mark": "line",
+      "title": "Use this line chart to filter out the data based on time",
+      "params": [
+        {
+          "name": "time_brush",
+          "select": {"type": "interval", "encodings": ["x"]}
+        }
+      ],
+      "encoding": {
+        "x": {
+          "field": "time",
+          "timeUnit": "yearmonth",
+          "axis": {"title": "", "format": "%Y"}
+        },
+        "y": {
+          "aggregate": "count",
+          "axis": {"tickCount": 3, "grid": false},
+          "title": "Count"
+        }
+      }
+    },
+
+
+
+    {
+      "width": "container",
+      "transform": [
+        {
+          "bin": {"step": 0.5, "extent": [5, 7]},
+          "field": "mag",
+          "as": "magnitude"
+        }
+      ],
+      "mark": "area",
+      "encoding": {
+        "x": {
+          "field": "time",
+          "timeUnit": "yearmonth",
+          "scale": {"domain": {"param": "time_brush"}},
+          "axis": {"title": "", "tickCount": 5, "grid": false}
+        },
+        "y": {"aggregate": "count", "title": "Count of Earthquakes"},
+        "color": {
+          "field": "magnitude",
+          "scale": {
+            "range": ["#fdbe85", "#fd8d3c", "#e6550d", "#bd0026", "#7f0000"]
+          },
+          "legend": null
+        }
+      }
+    }
+  ],
+  "config": {"title": {"font": "sans-serif", "fontSize": 14}}
+}
