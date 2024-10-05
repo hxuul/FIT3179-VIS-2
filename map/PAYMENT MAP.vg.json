@@ -12,7 +12,7 @@
   "center": [133, -28],
   "scale": 1050
   },
-  "background": "#4d97b7",
+  "background": "skyblue",
   "params": [{
     "name": "state_selection",
     "bind": {
