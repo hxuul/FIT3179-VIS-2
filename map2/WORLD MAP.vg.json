@@ -1,17 +1,36 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "data": {
-    "url": "https://raw.githubusercontent.com/hxuul/FIT3179-VIS-2/refs/heads/main/map2/map2.csv"
+    "url": "https://raw.githubusercontent.com/hxuul/FIT3179-VIS-2/refs/heads/main/map2/updated_combined_data.csv"
   },
   
   "vconcat": [
     {
       "_comment": "this is the world map section",
       "width": 1400,
-      "height": 500,
+      "height": 600,
       "title": "Global Distribution of Social Service Payments per 10,000 Population",
-      "projection": { "type": "equalEarth", "rotate": [-150, 0, 0] },
+      "projection": { "type": "equalEarth", "rotate": [-100, 0, 0]},
       "layer": [
+        
+
+        {
+          "_comment": "Layer for oceans",
+          "data": {
+            "url": "https://raw.githubusercontent.com/FIT3179/Vega-Lite/main/7_others/oceans.topojson",
+            "format": { "type": "topojson", "feature": "oceans" }
+          },
+          "mark": { "type": "geoshape", "fill": "skyblue" }
+        },
+
+        {
+          "_comment": "Layer for graticules",
+          "data": {
+            "url": "https://raw.githubusercontent.com/FIT3179/Vega-Lite/main/2_symbol_map/js/WorldMapWithGraticules.topojson",
+            "format": { "type": "topojson", "feature": "ne_110m_graticules_30" }
+          },
+          "mark": { "type": "geoshape", "fill": null, "stroke": "lightgray" }
+        },
         {
           "_comment": "Layer for countries",
           "data": {
@@ -30,8 +49,7 @@
           "mark": {
             "type": "geoshape",
             "fill": "lightgray",
-            "stroke": "white",
-            "strokeWidth": 0.5
+            "strokeWidth": 0.6
           },
           "encoding": {
             "tooltip": {
@@ -41,7 +59,7 @@
         },
 
         {
-          "_comment": "Layer for actual continent colors",
+          "_comment": "Layer for actual countries colors",
           "data": {
             "url": "https://raw.githubusercontent.com/FIT3179/Vega-Lite/main/2_symbol_map/js/ne_110m_admin_0_countries.topojson",
             "format": {
@@ -63,7 +81,7 @@
               "lookup": "properties.NAME",
               "from": {
                 "data": {
-                  "url": "https://raw.githubusercontent.com/hxuul/FIT3179-VIS-2/refs/heads/main/map2/map2.csv",
+                  "url": "https://raw.githubusercontent.com/hxuul/FIT3179-VIS-2/refs/heads/main/map2/updated_combined_data.csv",
                   "format": {
                     "type": "csv"
                   }
@@ -90,13 +108,19 @@
                   "Pension Concession Card",
                   "Special Benefit",
                   "Youth Allowance (other)",
-                  "Youth Allowance (student and apprentice)"
+                  "Youth Allowance (student and apprentice)",
+                  "population"
+
                 ]
               }
             },
             {
-              "calculate": "parseFloat(datum['ABSTUDY (Living allowance)']) + parseFloat(datum['ABSTUDY (Non-living allowance)']) + parseFloat(datum['Age Pension']) + parseFloat(datum['Austudy']) + parseFloat(datum['Carer Allowance']) + parseFloat(datum['Carer Allowance (Child Health Care Card only)']) + parseFloat(datum['Carer Payment']) + parseFloat(datum['Commonwealth Rent Assistance']) + parseFloat(datum['Commonwealth Seniors Health Card']) + parseFloat(datum['Disability Support Pension']) + parseFloat(datum['Family Tax Benefit A']) + parseFloat(datum['Family Tax Benefit B']) + parseFloat(datum['Health Care Card']) + parseFloat(datum['JobSeeker Payment']) + parseFloat(datum['Low Income Card']) + parseFloat(datum['Parenting Payment Partnered']) + parseFloat(datum['Parenting Payment Single']) + parseFloat(datum['Pension Concession Card']) + parseFloat(datum['Special Benefit']) + parseFloat(datum['Youth Allowance (other)']) + parseFloat(datum['Youth Allowance (student and apprentice)'])",
+              "calculate": "(parseFloat(datum['ABSTUDY (Living allowance)']) + parseFloat(datum['ABSTUDY (Non-living allowance)']) + parseFloat(datum['Age Pension']) + parseFloat(datum['Austudy']) + parseFloat(datum['Carer Allowance']) + parseFloat(datum['Carer Allowance (Child Health Care Card only)']) + parseFloat(datum['Carer Payment']) + parseFloat(datum['Commonwealth Rent Assistance']) + parseFloat(datum['Commonwealth Seniors Health Card']) + parseFloat(datum['Disability Support Pension']) + parseFloat(datum['Family Tax Benefit A']) + parseFloat(datum['Family Tax Benefit B']) + parseFloat(datum['Health Care Card']) + parseFloat(datum['JobSeeker Payment']) + parseFloat(datum['Low Income Card']) + parseFloat(datum['Parenting Payment Partnered']) + parseFloat(datum['Parenting Payment Single']) + parseFloat(datum['Pension Concession Card']) + parseFloat(datum['Special Benefit']) + parseFloat(datum['Youth Allowance (other)']) + parseFloat(datum['Youth Allowance (student and apprentice)']))",
               "as": "Total Count"
+            },
+            {
+              "calculate": "(parseFloat(datum['ABSTUDY (Living allowance)']) + parseFloat(datum['ABSTUDY (Non-living allowance)']) + parseFloat(datum['Age Pension']) + parseFloat(datum['Austudy']) + parseFloat(datum['Carer Allowance']) + parseFloat(datum['Carer Allowance (Child Health Care Card only)']) + parseFloat(datum['Carer Payment']) + parseFloat(datum['Commonwealth Rent Assistance']) + parseFloat(datum['Commonwealth Seniors Health Card']) + parseFloat(datum['Disability Support Pension']) + parseFloat(datum['Family Tax Benefit A']) + parseFloat(datum['Family Tax Benefit B']) + parseFloat(datum['Health Care Card']) + parseFloat(datum['JobSeeker Payment']) + parseFloat(datum['Low Income Card']) + parseFloat(datum['Parenting Payment Partnered']) + parseFloat(datum['Parenting Payment Single']) + parseFloat(datum['Pension Concession Card']) + parseFloat(datum['Special Benefit']) + parseFloat(datum['Youth Allowance (other)']) + parseFloat(datum['Youth Allowance (student and apprentice)']))/parseFloat(datum['population']) * 10000",
+              "as": "Count per 10,000 population"
             },
 
             {
@@ -104,7 +128,7 @@
               "as": "Selected Country"
             }
           ],
-          "mark": { "type": "geoshape", "stroke": "black", "strokeWidth": 0.6 },
+          "mark": { "type": "geoshape"},
           "encoding": {
             "opacity": {
               "condition": {
@@ -112,15 +136,31 @@
                 "value": 1,
                 "empty": false
               },
-              "value": 0.7
+              "value": 0.6
+            },
+            "strokeWidth": {
+              "condition": {
+                "param": "country_selection",
+                "value": 1,
+                "empty": false
+              },
+              "value": 0.6
+            },
+            "stroke":{
+              "condition": {
+                "param": "country_selection",
+                "value": "black",
+                "empty": false
+              },
+              "value": "white"
             },
             "color": {
-              "field": "Total Count",
+              "field": "Count per 10,000 population",
               "type": "quantitative",
               "title": "Count",
               "scale": {
-                "type": "threshold",
-                "domain": [100000, 500000, 1000000, 5000000, 10000000],
+                "type": "log",
+                "domain": [1, 10, 100, 1000, 10000, 100000],
                 "range": ["#fdbe85", "#fd8d3c", "#e6550d", "#bd0026", "#7f0000"]
               }
             },
@@ -128,37 +168,67 @@
               {
                 "field": "properties.NAME",
                 "type": "nominal",
-                "title": "Country 2 "
+                "title": "Country Name "
               },
+              
+              {
+                "field": "Count per 10,000 population",
+                "type": "nominal",
+                "title": "Count per 10,000 population",
+                "format": ".2f"
+              },
+
               {
                 "field": "Total Count",
                 "type": "quantitative",
                 "title": "Total Count"
-              },
-              {
-                "field": "Selected Country",
-                "type": "nominal",
-                "title": "Selected Country"
               }
             ]
           }
         },
-        {
-          "_comment": "Layer for oceans",
-          "data": {
-            "url": "https://raw.githubusercontent.com/FIT3179/Vega-Lite/main/7_others/oceans.topojson",
-            "format": { "type": "topojson", "feature": "oceans" }
-          },
-          "mark": { "type": "geoshape", "fill": "skyblue" }
-        },
+        
+
 
         {
-          "_comment": "Layer for graticules",
+          "_comment": "Text for countries",
           "data": {
-            "url": "https://raw.githubusercontent.com/FIT3179/Vega-Lite/main/2_symbol_map/js/WorldMapWithGraticules.topojson",
-            "format": { "type": "topojson", "feature": "ne_110m_graticules_30" }
+            "url": "https://raw.githubusercontent.com/FIT3179/Vega-Lite/main/2_symbol_map/js/ne_110m_admin_0_countries.topojson",
+            "format": {
+              "type": "topojson",
+              "feature": "ne_110m_admin_0_countries"
+            }
           },
-          "mark": { "type": "geoshape", "fill": null, "stroke": "lightgray" }
+          
+          "transform": [
+            {
+              "lookup": "properties.NAME",
+              "from": {
+                "data": {
+                  "url": "https://raw.githubusercontent.com/FIT3179/Vega-Lite/main/3_choropleth_map/data/countryInfo.csv"
+                },
+                "key": "name",
+                "fields": ["latitude", "longitude"]
+              }
+            }
+          ],
+          "mark": { 
+            "type": "text",
+            "fontWeight": "bold",
+            "fontSize": 14
+          },
+          "encoding": {
+            "longitude": {"field": "longitude", "type": "quantitative"},
+            "latitude": {"field": "latitude", "type": "quantitative"},
+            "text": {"field": "properties.NAME", "type": "nominal"},
+            "opacity": {
+              "condition": {
+                "param": "country_selection",
+                "value": 1,
+                "empty": false
+              },
+              "value": 0
+            }
+          }
         }
       ]
     },
@@ -166,7 +236,7 @@
     {
       
       "width": 1400,
-      "height": 200,
+      "height": 100,
       "title": "Breakdown of Social Service Payments by Benefit Type for Selected Country",
       "data": {
         "url": "https://raw.githubusercontent.com/FIT3179/Vega-Lite/main/2_symbol_map/js/ne_110m_admin_0_countries.topojson",
