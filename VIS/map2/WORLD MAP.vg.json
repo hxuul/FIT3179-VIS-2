@@ -46,7 +46,7 @@
           "mark": { "type": "geoshape", "fill": null, "stroke": "lightgray" }
         },
         {
-          "_comment": "Layer for countries",
+          "_comment": "Layer for background",
           "data": {
             "url": "https://raw.githubusercontent.com/FIT3179/Vega-Lite/main/2_symbol_map/js/ne_110m_admin_0_countries.topojson",
             "format": {
@@ -65,11 +65,13 @@
             "fill": "lightgray",
             "strokeWidth": 0.6
           },
+          
           "encoding": {
             "tooltip": {
               "field": "note"
             }
           }
+          
         },
 
         {
@@ -83,6 +85,7 @@
           },
           "params": [
             {
+              "value":"Total",
               "name": "country_selection",
               "select": {
                 "type": "point",
@@ -136,11 +139,6 @@
             {
               "calculate": "(parseFloat(datum['ABSTUDY (Living allowance)']) + parseFloat(datum['ABSTUDY (Non-living allowance)']) + parseFloat(datum['Age Pension']) + parseFloat(datum['Austudy']) + parseFloat(datum['Carer Allowance']) + parseFloat(datum['Carer Allowance (Child Health Care Card only)']) + parseFloat(datum['Carer Payment']) + parseFloat(datum['Commonwealth Rent Assistance']) + parseFloat(datum['Commonwealth Seniors Health Card']) + parseFloat(datum['Disability Support Pension']) + parseFloat(datum['Family Tax Benefit A']) + parseFloat(datum['Family Tax Benefit B']) + parseFloat(datum['Health Care Card']) + parseFloat(datum['JobSeeker Payment']) + parseFloat(datum['Low Income Card']) + parseFloat(datum['Parenting Payment Partnered']) + parseFloat(datum['Parenting Payment Single']) + parseFloat(datum['Pension Concession Card']) + parseFloat(datum['Special Benefit']) + parseFloat(datum['Youth Allowance (other)']) + parseFloat(datum['Youth Allowance (student and apprentice)']))/parseFloat(datum['population']) * 10000",
               "as": "Count per 10,000 population"
-            },
-
-            {
-              "calculate": "country_selection",
-              "as": "Selected Country"
             }
           ],
           "mark": { "type": "geoshape"},
@@ -300,6 +298,7 @@
             },
             "key": "Country of Birth",
             "fields": [
+              "Country of Birth",
               "ABSTUDY (Living allowance)",
               "ABSTUDY (Non-living allowance)",
               "Age Pension",
@@ -326,7 +325,7 @@
         },
 
         {
-          "filter": { "param": "country_selection", "empty": false }
+          "filter": { "param": "country_selection", "empty": true }
         },
         {
           "fold": [
@@ -393,5 +392,5 @@
               "top": 50,
               "bottom": 150
               }
-            }
+  }
 }
