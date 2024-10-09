@@ -10,20 +10,13 @@
     },
     "transform": [{
         "fold": [
-          "ABSTUDY (Living allowance)",
-          "ABSTUDY (Non-living allowance)",
-          "Age Pension",
-          "Austudy",
-          "Carer Payment",
-          "Disability Support Pension",
-          "JobSeeker Payment",
-          "Parenting Payment Partnered",
-          "Parenting Payment Single",
-          "Special Benefit",
-          "Youth Allowance (other)",
-          "Youth Allowance (student and apprentice)"
+        "Under 1 year",
+        "1-<2 years",
+        "2-<5 years",
+        "5-<10 years",
+        "10 years+"
         ],
-        "as": ["Payment Type", "Total Count"]
+        "as": ["Duration", "Count"]
     }],
     
         
@@ -31,31 +24,35 @@
     "mark": {"type": "bar"},
     "encoding": {
         "x": {
-          "field": "Payment Type",
-          "type": "nominal",
-          "title": "Payment Type",
-          "axis": { "labelAngle": -45 },
-          "sort": "-y"
+        "field": "Payment type",
+        "type": "nominal",
+        "title": "Payment Type",
+        "axis": { "labelAngle": -45 }
         },
         "y": {
-          "field": "Total Count",
-          "type": "quantitative",
-          "title": "Total Count"
+        "field": "Count",
+        "type": "quantitative",
+        "title": "Total Count"
         },
+        
         "tooltip": [
-          {
-            "field": "Payment Type",
+        {
+            "field": "Payment type",
             "type": "nominal",
             "title": "Payment Type"
-          },
-          {
-            "field": "Total Count",
+        },
+        {
+            "field": "Duration",
             "type": "nominal",
+            "title": "Duration"
+        },
+        {
+            "field": "Count",
+            "type": "quantitative",
             "title": "Total Count"
-          }
-
+        }
         ]
-      },
+    },
     "title": "Duration Bar Chart"
   
   }
