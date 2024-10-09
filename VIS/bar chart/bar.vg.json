@@ -17,7 +17,9 @@
         "10 years+"
         ],
         "as": ["Duration", "Count"]
-    }],
+    },{
+        "filter": "datum.Count > 0"
+      }],
     
         
     
@@ -27,14 +29,23 @@
         "field": "Payment type",
         "type": "nominal",
         "title": "Payment Type",
-        "axis": { "labelAngle": -45 }
+        "axis": { "labelAngle": -45 },
+        "sort":"-y"
         },
         "y": {
         "field": "Count",
         "type": "quantitative",
-        "title": "Total Count"
+        "title": "Total Count",
+        "scale":{
+            "type": "linear"
         },
+        "axis": {
+            "format": "e"
+        }
         
+        
+        },
+        "color": {"field": "Duration"},
         "tooltip": [
         {
             "field": "Payment type",
@@ -50,6 +61,11 @@
             "field": "Count",
             "type": "quantitative",
             "title": "Total Count"
+        },
+        {
+            "field": "Average duration on payment (weeks)",
+            "type": "quantitative",
+            "title": "Average (weeks)"
         }
         ]
     },
