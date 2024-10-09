@@ -3,14 +3,28 @@
   "data": {
     "url": "https://raw.githubusercontent.com/hxuul/FIT3179-VIS-2/refs/heads/main/map2/updated_combined_data.csv"
   },
-  
+  "params": [{
+    "name": "zoom_level",
+    "value": 225,
+    "bind": {
+      "input": "range",
+      "min": 100,
+      "max": 400,
+      "step": 5,
+      "name": "Zoom: "
+    }
+  }],
   "vconcat": [
     {
       "_comment": "this is the world map section",
-      "width": 1400,
-      "height": 600,
+      "width": 1500,
+      "height": 500,
       "title": "Global Distribution of Social Service Payments per 10,000 Population",
-      "projection": { "type": "equalEarth", "rotate": [-100, 0, 0]},
+      "projection": { "type": "equirectangular", 
+                      "rotate": [-80, 0, 0],
+                      "scale": {"expr": "zoom_level"},
+                      "center": [0, 80]
+                    },
       "layer": [
         
 
@@ -185,6 +199,34 @@
                 "title": "Total Count"
               }
             ]
+          },
+          "_comment_annotation": "Layer for annotation text"
+          
+        },
+        {
+          "_comment_annotation": "New annotation layer for Australia",
+          "data": {
+            "values": [
+              {
+                "longitude": 133.775136,
+                "latitude": -25.274398,
+                "text_annotation": "Australia has the highest count per 10,000 population"
+              }
+            ]
+          },
+          "mark": {
+            "type": "text",
+            "align": "left",
+            "dx": 60,
+            "dy": -10,
+            "fontStyle": "italic",
+            "fontSize": 12,
+            "fontWeight": "bold"
+          },
+          "encoding": {
+            "longitude": { "field": "longitude", "type": "quantitative" },
+            "latitude": { "field": "latitude", "type": "quantitative" },
+            "text": { "field": "text_annotation" }
           }
         },
         
@@ -236,7 +278,7 @@
 
     {
       
-      "width": 1400,
+      "width": 1500,
       "height": 100,
       "title": "Breakdown of Social Service Payments by Benefit Type for Selected Country",
       "data": {
