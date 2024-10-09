@@ -1,5 +1,4 @@
 ﻿Payment type,Under 1 year,1-<2 years,2-<5 years,5-<10 years,10 years+,Average duration on payment (weeks)
-,,,,,,
 ABSTUDY (Living Allowance),"3,740","2,110","1,460",175,5,66
 ABSTUDY (Non-Living Allowance),"6,750","5,805","6,505",145,5,77
 Age Pension,"106,670","177,635","361,405","627,500","1,309,780",609
@@ -7,7 +6,6 @@ Austudy,"9,475","6,320","4,815",185,30,70
 Carer Payment,"34,730","38,230","79,200","75,710","79,115",356
 Disability Support Pension,"43,260","47,625","95,385","106,070","496,445",755
 JobSeeker Payment,"291,195","128,800","386,720",0,0,113
-JobSeeker Payment including time on Newstart Allowance for recipients who transitioned on 20 March 2020 ,"291,195","128,800","193,920","125,765","67,040",180
 Parenting Payment Partnered,"15,555","11,895","20,700","8,050","1,480",153
 Parenting Payment Single,"115,025","40,950","83,335","54,870","15,190",165
 Special Benefit,"1,975","2,115","1,765",700,10,117

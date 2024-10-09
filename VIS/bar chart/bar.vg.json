@@ -7,39 +7,56 @@
 
     "data": {
           "url": "https://raw.githubusercontent.com/hxuul/FIT3179-VIS-2/refs/heads/main/VIS/bar%20chart/payment_duration.csv"
-        },
-        "transform": [
-          {
-            "fold": ["Male", "Female"],
-            "as": ["Gender", "value"]
-          },
-          {
-            "filter": "datum['Payment type'] == payment_type_selection"
-          },
-          {
-            "window": [{"op": "sum", "field": "value", "as": "TotalValue"}],
-            "frame": [null, null]
-          },
-          {
-            "calculate": "datum.value / datum.TotalValue * 100",
-            "as": "Percentage"
-          }
+    },
+    "transform": [{
+        "fold": [
+          "ABSTUDY (Living allowance)",
+          "ABSTUDY (Non-living allowance)",
+          "Age Pension",
+          "Austudy",
+          "Carer Payment",
+          "Disability Support Pension",
+          "JobSeeker Payment",
+          "Parenting Payment Partnered",
+          "Parenting Payment Single",
+          "Special Benefit",
+          "Youth Allowance (other)",
+          "Youth Allowance (student and apprentice)"
         ],
-        "mark": {"type": "arc"},
-        "encoding": {
-          "theta": {"field": "value", "type": "quantitative"},
-          "color": {
-            "field": "Gender",
-            "type": "nominal",
-            "scale": {"range": ["#87CEFA", "#FFB6C1"]}
-          },
-          "tooltip": [
-            {"field": "Gender", "type": "nominal"},
-            {"field": "value", "type": "quantitative","title":"Count"},
-            {"field": "Percentage", "type": "quantitative", "format": ".1f", "title": "Percentage"}
-          ]
+        "as": ["Payment Type", "Total Count"]
+    }],
+    
+        
+    
+    "mark": {"type": "bar"},
+    "encoding": {
+        "x": {
+          "field": "Payment Type",
+          "type": "nominal",
+          "title": "Payment Type",
+          "axis": { "labelAngle": -45 },
+          "sort": "-y"
         },
-        "title": "Australian Capital Territory"
+        "y": {
+          "field": "Total Count",
+          "type": "quantitative",
+          "title": "Total Count"
+        },
+        "tooltip": [
+          {
+            "field": "Payment Type",
+            "type": "nominal",
+            "title": "Payment Type"
+          },
+          {
+            "field": "Total Count",
+            "type": "nominal",
+            "title": "Total Count"
+          }
+
+        ]
+      },
+    "title": "Duration Bar Chart"
   
   }
   
