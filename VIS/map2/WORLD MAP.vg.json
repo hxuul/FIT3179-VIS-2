@@ -17,13 +17,13 @@
   "vconcat": [
     {
       "_comment": "this is the world map section",
-      "width": 1500,
+      "width": 1000,
       "height": 500,
       "title": "Global Distribution of Social Service Payments per 10,000 Population",
       "projection": { "type": "equirectangular", 
                       "rotate": [-80, 0, 0],
                       "scale": {"expr": "zoom_level"},
-                      "center": [0, 80]
+                      "center": [0, 70]
                     },
       "layer": [
         
@@ -85,7 +85,7 @@
           },
           "params": [
             {
-              "value":"Total",
+              
               "name": "country_selection",
               "select": {
                 "type": "point",
@@ -206,19 +206,19 @@
           "data": {
             "values": [
               {
-                "longitude": 133.775136,
-                "latitude": -25.274398,
-                "text_annotation": "Australia has the highest count per 10,000 population"
+                "longitude": 150,
+                "latitude": -22,
+                "text_annotation": "Australia has the highest count"
               }
             ]
           },
           "mark": {
             "type": "text",
             "align": "left",
-            "dx": 60,
-            "dy": -10,
+            "dx": 0,
+            "dy": 0,
             "fontStyle": "italic",
-            "fontSize": 12,
+            "fontSize": 10,
             "fontWeight": "bold"
           },
           "encoding": {
@@ -245,14 +245,17 @@
               "lookup": "properties.NAME",
               "from": {
                 "data": {
-                  "url": "https://raw.githubusercontent.com/FIT3179/Vega-Lite/main/3_choropleth_map/data/countryInfo.csv"
+                  "url": "https://raw.githubusercontent.com/hxuul/FIT3179-VIS-2/refs/heads/main/map2/countries_mapinfo.csv"
                 },
                 "key": "name",
                 "fields": ["latitude", "longitude"]
               }
+            },
+            {
+              "filter": "datum.latitude != null && datum.longitude != null"
             }
           ],
-          "mark": { 
+          "mark": {
             "type": "text",
             "fontWeight": "bold",
             "fontSize": 14
@@ -276,7 +279,7 @@
 
     {
       
-      "width": 1500,
+      "width": 1000,
       "height": 100,
       "title": "Breakdown of Social Service Payments by Benefit Type for Selected Country",
       "data": {
@@ -323,10 +326,105 @@
             ]
           }
         },
+        {
+          "calculate": "isValid(datum['Country of Birth'])  ? datum['Country of Birth'] : 'Total'",
+          "as": "CountryOfBirthFinal"
+        },
+        {
+          "calculate": "isValid(datum['ABSTUDY (Living allowance)']) ? datum['ABSTUDY (Living allowance)'] : 7485",
+          "as": "ABSTUDY (Living allowance)"
+        },
+        {
+          "calculate": "isValid(datum['ABSTUDY (Non-living allowance)']) ? datum['ABSTUDY (Non-living allowance)'] : 19210",
+          "as": "ABSTUDY (Non-living allowance)"
+        },
+        {
+          "calculate": "isValid(datum['Age Pension']) ? datum['Age Pension'] : 2582990",
+          "as": "Age Pension"
+        },
+        {
+          "calculate": "isValid(datum['Austudy']) ? datum['Austudy'] : 20820",
+          "as": "Austudy"
+        },
+        {
+          "calculate": "isValid(datum['Carer Allowance']) ? datum['Carer Allowance'] : 646720",
+          "as": "Carer Allowance"
+        },
+        {
+          "calculate": "isValid(datum['Carer Allowance (Child Health Care Card only)']) ? datum['Carer Allowance (Child Health Care Card only)'] : 8080",
+          "as": "Carer Allowance (Child Health Care Card only)"
+        },
+        {
+          "calculate": "isValid(datum['Carer Payment']) ? datum['Carer Payment'] : 306985",
+          "as": "Carer Payment"
+        },
+        {
+          "calculate": "isValid(datum['Commonwealth Rent Assistance']) ? datum['Commonwealth Rent Assistance'] : 1295005",
+          "as": "Commonwealth Rent Assistance"
+        },
+        {
+          "calculate": "isValid(datum['Commonwealth Seniors Health Card']) ? datum['Commonwealth Seniors Health Card'] : 519260",
+          "as": "Commonwealth Seniors Health Card"
+        },
+        {
+          "calculate": "isValid(datum['Disability Support Pension']) ? datum['Disability Support Pension'] : 788785",
+          "as": "Disability Support Pension"
+        },
+        {
+          "calculate": "isValid(datum['Family Tax Benefit A']) ? datum['Family Tax Benefit A'] : 1267510",
+          "as": "Family Tax Benefit A"
+        },
+        {
+          "calculate": "isValid(datum['Family Tax Benefit B']) ? datum['Family Tax Benefit B'] : 996785",
+          "as": "Family Tax Benefit B"
+        },
+        {
+          "calculate": "isValid(datum['Health Care Card']) ? datum['Health Care Card'] : 1271240",
+          "as": "Health Care Card"
+        },
+        {
+          "calculate": "isValid(datum['JobSeeker Payment']) ? datum['JobSeeker Payment'] : 806715",
+          "as": "JobSeeker Payment"
+        },
+        {
+          "calculate": "isValid(datum['Low Income Card']) ? datum['Low Income Card'] : 160290",
+          "as": "Low Income Card"
+        },
+        {
+          "calculate": "isValid(datum['Parenting Payment Partnered']) ? datum['Parenting Payment Partnered'] : 57685",
+          "as": "Parenting Payment Partnered"
+        },
+        {
+          "calculate": "isValid(datum['Parenting Payment Single']) ? datum['Parenting Payment Single'] : 309370",
+          "as": "Parenting Payment Single"
+        },
+        {
+          "calculate": "isValid(datum['Pension Concession Card']) ? datum['Pension Concession Card'] : 4360090",
+          "as": "Pension Concession Card"
+        },
+        {
+          "calculate": "isValid(datum['Special Benefit']) ? datum['Special Benefit'] : 6565",
+          "as": "Special Benefit"
+        },
+        {
+          "calculate": "isValid(datum['Youth Allowance (other)']) ? datum['Youth Allowance (other)'] : 85505",
+          "as": "Youth Allowance (other)"
+        },
+        {
+          "calculate": "isValid(datum['Youth Allowance (student and apprentice)']) ? datum['Youth Allowance (student and apprentice)'] : 121850",
+          "as": "Youth Allowance (student and apprentice)"
+        },
 
+
+
+
+        {
+          "filter": "datum.CountryOfBirthFinal != null && datum['CountryOfBirthFinal'] != 'undefined'"
+        },
         {
           "filter": { "param": "country_selection", "empty": true }
         },
+        
         {
           "fold": [
             "ABSTUDY (Living allowance)",
@@ -377,9 +475,10 @@
           },
           {
             "field": "Total Count",
-            "type": "quantitative",
+            "type": "nominal",
             "title": "Total Count"
           }
+
         ]
       }
     }
@@ -387,10 +486,10 @@
   "config": { "title": { "font": "sans-serif", "fontSize": 16 },
               "axis": {"labelFontSize": 9,"titleFontSize": 15},
               "padding": {
-              "left": 100,
+              "left": 0,
               "right": 20,
               "top": 50,
-              "bottom": 150
+              "bottom": 10
               }
   }
 }
