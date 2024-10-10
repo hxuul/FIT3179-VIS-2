@@ -6,80 +6,109 @@
     <script src="https://cdn.jsdelivr.net/npm/vega@5.20.2"></script>
     <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.1.1"></script>
     <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.18.2"></script>
-    <title>Main Page</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            padding-top: 30px;
-
-        }
-        h1 {
-            margin-top: 10px;
-            text-align: center;
-        }
-        .link-button {
-            background-color: #4CAF50;
-            border: none;
-            color: white;
-            padding: 15px 32px;
-            text-align: center;
-            text-decoration: none;
-            display: inline-block;
-            font-size: 16px;
-            margin: 4px 2px;
-            cursor: pointer;
-        }
-
-        /* Align the dropdown-container to the left and adjust width */
-        .dropdown-container {
-            margin: 0;
-            width: 100%;
-            display: flex;
-            justify-content: flex-start; 
-        }
-
-        #map {
-            width: 60%; /* Adjust width of the map */
-        }
-
-        /* Add zoom parameter styling */
-        .zoom-container {
-            display: flex;
-            justify-content: flex-start; /* Align zoom slider to the left */
-            margin-top: 10px;
-        }
-
-        .zoom-label {
-            padding-right: 10px;
-        }
-    </style>
+    <link rel="stylesheet" href="css/styles.css">
+    <title>Australian Benficial Payment Data Visualization</title>
+    
 </head>
 <body>
+    <header id="header">
+        <nav class="links" style="--items: 5;">
+            <a href="#">Link 1</a>
+            <a href="#">Link 2</a>
+            <a href="#">Link 3</a>
+            <a href="#">Link 4</a>
+            <a href="#">Link 5</a>
+            <span class="line"></span>
+        </nav>
+    </header>
+    <h1>Australian Benficial Payment Data Visualization</h1>
+    <main>
+        <div id="vis-container">
+            <div id="map"></div>
+            
+        </div>
+        <div id="description">
+            <h2>description</h2>
+            <button class="open-modal-btn" id="openModal">Show Payment Information</button>
 
-    <h1>This is the main/overview page</h1>
-    <p>Click the button below to go to the other page(State??):</p>
+            <!-- The Modal -->
+            <div id="myModal" class="modal">
+                <!-- Modal content -->
+                <div class="modal-content">
+                    <span class="close">&times;</span>
+                    <p style="font-size: 15px; line-height: 1.8;">
+                        <strong>ABSTUDY 1:</strong> Provides financial assistance to Indigenous Australian students and apprentices to help with living costs while studying or training.<br>
+                        <strong>ABSTUDY 2:</strong> Offers support for education-related expenses other than living costs to Indigenous Australian students, such as school fees and educational materials.<br>
+                        <strong>Age Pension:</strong> Income support for older Australians who have reached the qualifying age to assist with basic living expenses during retirement.<br>
+                        <strong>Austudy:</strong> Financial assistance for full-time students and apprentices aged 25 or over to help with living costs while they study or train.<br>
+                        <strong>Carer Allowance 1:</strong> A supplementary payment for people who provide additional daily care and attention to someone with a disability or medical condition.<br>
+                        <strong>Carer Allowance 2:</strong> Provides a Health Care Card for carers of children under 16 with a disability or medical condition, giving access to concessions and reduced-cost medicines.<br>
+                        <strong>Carer Payment:</strong> Income support for individuals who are unable to work full-time because they care for someone with a severe disability, illness, or frailty due to age.<br>
+                        <strong>Rent Assistance:</strong> A non-taxable income supplement to help eligible people who rent in the private market or community housing with their rental costs.<br>
+                        <strong>Seniors Health Card:</strong> Provides access to cheaper health care and some discounts for self-funded retirees of pension age who do not qualify for the Age Pension.<br>
+                        <strong>Disability Pension:</strong> Financial support for people with a permanent physical, intellectual, or psychiatric condition that prevents them from working.<br>
+                        <strong>Family Benefit A:</strong> Assistance to families with the cost of raising children, paid per child based on age and family income.<br>
+                        <strong>Family Benefit B:</strong> Additional assistance for single-parent families and families with one main income earner to help with the cost of raising children.<br>
+                        <strong>Health Care Card:</strong> Provides access to reduced-cost prescription medicines and other concessions to eligible low-income earners and recipients of certain government payments.<br>
+                        <strong>JobSeeker Payment:</strong> Financial help for people aged 22 and over who are unemployed or temporarily unable to work due to illness or injury.<br>
+                        <strong>Low Income Card:</strong> A concession card that offers reduced-cost medicines and other concessions to individuals and families on a low income.<br>
+                        <strong>Parenting Pay 1:</strong> Income support for partnered parents or guardians caring for young children, assisting with living expenses.<br>
+                        <strong>Parenting Pay 2:</strong> Income support for single parents or guardians with young children to help with living costs.<br>
+                        <strong>Pensioner Concession:</strong> Provides access to cheaper health services and medicines for eligible pensioners.<br>
+                        <strong>Special Benefit:</strong> Financial assistance for people in severe financial hardship who are not eligible for other income support payments.<br>
+                        <strong>Youth Allowance 1:</strong> Financial help for young people aged 16 to 21 who are looking for work, undertaking approved activities, or temporarily unable to work.<br>
+                        <strong>Youth Allowance 2:</strong> Financial assistance for full-time students and apprentices aged 16 to 24 to help with living costs while studying or training.
+                    </p>
+                </div>
+            </div>
+            
+            
+            
+        </div>
+        <div id="vis-container">
+            <div id="bar"></div>
+        </div>
+        <div id="description">
+            <h2>description</h2>
+            
+        </div>
+    </main>
     
-    <!-- Button linking to another HTML page -->
-    <a href="map/index.html">
-        <button class="link-button">Go to Other Page</button>
-    </a>
 
-    <div class="dropdown-container">
-        <div id="map"></div>
-    </div>
-
-
-    <div id="bar"></div>
-
-
-    <!-- Create a container for the zoom slider and label -->
-    
-
+    <!-- Embedding the Vega visualizations -->
     <script>
-        // Embedding the Vega map visualization
         vegaEmbed("#map", "map2/WORLD MAP.vg.json").catch(console.error);
         vegaEmbed("#bar", "bar chart/bar.vg.json").catch(console.error);
+        // Get the modal
+        var modal = document.getElementById("myModal");
+
+        // Get the button that opens the modal
+        var btn = document.getElementById("openModal");
+
+        // Get the <span> element that closes the modal
+        var span = document.getElementsByClassName("close")[0];
+
+        // When the user clicks the button, open the modal 
+        btn.onclick = function() {
+            modal.style.display = "block";
+        }
+
+        // When the user clicks on <span> (x), close the modal
+        span.onclick = function() {
+            modal.style.display = "none";
+        }
+
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
     </script>
+
+    <footer>
+        © 2024 Australian Benficial Payment Data Visualization | Data sourced from NASA's MODIS
+    </footer>
 
 </body>
 </html>
