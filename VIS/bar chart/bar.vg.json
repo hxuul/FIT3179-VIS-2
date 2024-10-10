@@ -8,7 +8,7 @@
     "vconcat":[
         
         {
-            "width": 1000,
+            "width": 1010,
             "height": 550,
             "data": {
               "url": "https://raw.githubusercontent.com/hxuul/FIT3179-VIS-2/refs/heads/main/VIS/bar%20chart/payment_duration_updated.csv"
@@ -106,7 +106,7 @@
         }
           ,
         {
-            "width": 1000,
+            "width": 1010,
             "height": 100,
             "data": {
               "url": "https://raw.githubusercontent.com/hxuul/FIT3179-VIS-2/refs/heads/main/VIS/bar%20chart/payment_duration_updated.csv"

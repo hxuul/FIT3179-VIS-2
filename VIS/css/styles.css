@@ -15,7 +15,7 @@ h1 {
 }
 
 #vis-container {
-  width: 63%;
+  width: auto;
   max-width: 100%;
   margin-right: 0px;
   margin-bottom: 20px;
@@ -26,7 +26,7 @@ h1 {
   position: relative;
 }
 #description {
-  width: 33%;
+  width: 32%;
   max-width: 100%;
   padding: 0px;
   background-color: white;
