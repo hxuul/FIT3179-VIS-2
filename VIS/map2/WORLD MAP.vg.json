@@ -173,8 +173,8 @@
               "title": "Count per 10,000 population",
               "scale": {
                 "type": "log",
-                "domain": [1, 10, 100, 1000, 10000, 100000],
-                "range": ["#fdbe85", "#fd8d3c", "#e6550d", "#bd0026", "#7f0000"]
+                "domain": [1, 10, 100, 1000, 10000],
+                "range": ["#d9f0a3", "#addd8e", "#78c679", "#31a354", "#006837"]
               }
             },
             "tooltip": [
@@ -219,7 +219,8 @@
             "dy": 0,
             "fontStyle": "italic",
             "fontSize": 10,
-            "fontWeight": "bold"
+            "fontWeight": "bold",
+            "color": "red"
           },
           "encoding": {
             "longitude": { "field": "longitude", "type": "quantitative" },
@@ -452,7 +453,10 @@
           "as": ["Payment Type", "Total Count"]
         }
       ],
-      "mark": "bar",
+      "mark": {
+        "type": "bar",
+        "color": "#addd8e"
+      },
       "encoding": {
         "x": {
           "field": "Payment Type",
@@ -465,8 +469,10 @@
           "aggregate": "sum",
           "field": "Total Count",
           "type": "quantitative",
-          "title": "Total Count"
+          "title": "Total Count",
+          "axis":{"format": "e"}
         },
+        
         "tooltip": [
           {
             "field": "Payment Type",
@@ -484,7 +490,7 @@
     }
   ],
   "config": { "title": { "font": "sans-serif", "fontSize": 16 },
-              "axis": {"labelFontSize": 9,"titleFontSize": 15},
+              "axis": {"labelFontSize": 8,"titleFontSize": 10},
               "padding": {
               "left": 0,
               "right": 20,
