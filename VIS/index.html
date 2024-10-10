@@ -70,8 +70,9 @@
         </div>
         <div id="description">
             <h2>description</h2>
-            
+            <div id="bar2"></div>
         </div>
+        
     </main>
     
 
@@ -79,6 +80,7 @@
     <script>
         vegaEmbed("#map", "map2/WORLD MAP.vg.json").catch(console.error);
         vegaEmbed("#bar", "bar chart/bar.vg.json").catch(console.error);
+        vegaEmbed("#bar2", "bar chart_2/bar.vg.json").catch(console.error);
         // Get the modal
         var modal = document.getElementById("myModal");
 

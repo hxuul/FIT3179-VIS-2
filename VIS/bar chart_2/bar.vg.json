@@ -4,19 +4,20 @@
     
 
 
-    "width": 1010,
-    "height": 550,
+    "width": 500,
+    "height": 200,
     "data": {
       "url": "https://raw.githubusercontent.com/hxuul/FIT3179-VIS-2/refs/heads/main/VIS/bar%20chart_2/earnings_update.csv"
     },
     
-    "mark": { "type": "bar","size": 45 },
+    "mark": { "type": "bar","size": 25 },
     "encoding": {
       "x": {
         "field": "Payment type",
         "type": "nominal",
         "title": "Payment type",
-        "sort": "-y"
+        "sort": "-y",
+        "axis": { "labelAngle": -45 }
       },
       "y": {
         "field": "No earnings rate",
@@ -43,7 +44,7 @@
           "field": "No earnings rate",
           "type": "quantitative",
           "title": "Percentage",
-          "format": ".0%"
+          "format": ".2%"
         }
       ]
     },
@@ -51,7 +52,7 @@
     
     
     "title": {
-                "text": "Duration Bar Chart",
+                "text": "No earning Rate",
                 "anchor": "middle"
             },
     "config": { "title": { "font": "sans-serif", "fontSize": 16 },
