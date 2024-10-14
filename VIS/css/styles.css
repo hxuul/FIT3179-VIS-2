@@ -28,8 +28,8 @@ h1 {
   position: relative;
 }
 
-#description {
-  width: 20%;
+.description {
+  width: 27%;
   max-width: 100%;
   padding: 0px;
   background-color: white;
@@ -38,12 +38,55 @@ h1 {
   margin-bottom: 20px;
 }
 
-VIS {
+VIS_Map {
   width: 85%;
   /* Make the map fill the container */
   height: auto;
   /* Maintain the aspect ratio */
   max-width: 100%;
+  /* Ensure the map doesn't exceed the container width */
+  display: block;
+  /* Remove extra spacing */
+}
+VIS_Bar {
+  width: 15%;
+  /* Make the map fill the container */
+  height: auto;
+  /* Maintain the aspect ratio */
+  max-width: 90%;
+  /* Ensure the map doesn't exceed the container width */
+  display: block;
+  /* Remove extra spacing */
+}
+
+VIS_IN {
+  width: 100%;
+  /* Make the map fill the container */
+  height: auto;
+  /* Maintain the aspect ratio */
+  max-width: 80%;
+  /* Ensure the map doesn't exceed the container width */
+  display: block;
+  padding-left: 10%;
+  /* Remove extra spacing */
+}
+
+VIS_Map_2 {
+  width: 100%;
+  /* Make the map fill the container */
+  height: auto;
+  /* Maintain the aspect ratio */
+  max-width: 110%;
+  /* Ensure the map doesn't exceed the container width */
+  display: block;
+  /* Remove extra spacing */
+}
+VIS_PIE {
+  width: 70%;
+  /* Make the map fill the container */
+  height: auto;
+  /* Maintain the aspect ratio */
+  max-width: 70%;
   /* Ensure the map doesn't exceed the container width */
   display: block;
   /* Remove extra spacing */
@@ -63,14 +106,24 @@ VIS {
 .zoom-label {
   padding-right: 10px;
 }
-
+/* Footer */
 footer {
   text-align: center;
   padding: 10px;
-  background-color: #004a99;
+  background-color: black;
   color: white;
   width: 100%;
-  margin-top: 20px;
+  margin-top: 10px;
+  font-size: 14px;  /* Slightly smaller font for better readability */
+}
+
+footer a {
+  color: #FFD700; /* Link color to stand out */
+  text-decoration: none;
+}
+
+footer a:hover {
+  text-decoration: underline;  /* Add underline on hover for better UX */
 }
 
 main {
@@ -180,15 +233,8 @@ code {
   padding: 0;
 }
 
-/* Footer */
-footer {
-  background-color: #004a99;
-  color: white;
-  padding: 10px;
-  text-align: center;
-  width: 100%;
-  margin-top: 20px;
-}
+
+
 
 /* Navbar */
 #header {

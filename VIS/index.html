@@ -15,8 +15,8 @@
 <body>
     <header id="header">
         <nav class="links" style="--items: 5;">
-            <a href="pg1.html">Link 1</a>
-            <a href="#">Link 2</a>
+            <a href="index.html">Home</a>
+            <a href="pg1.html">About State</a>
             <a href="#">Link 3</a>
             <a href="#">Link 4</a>
             <a href="#">Link 5</a>
@@ -26,10 +26,10 @@
     <h1>Australian Benficial Payment Data Visualization</h1>
     <main>
         <div id="vis-container">
-            <VIS id="map"></VIS>
+            <VIS_Map id="map"></VIS_Map>
 
         </div>
-        <div id=" description">
+        <div class=" description">
             <h2>description</h2>
             <button class="open-modal-btn" id="openModal">Show Payment Information</button>
 
@@ -101,15 +101,13 @@
                 </div>
             </div>
 
-
-
         </div>
         <div id="vis-container">
-            <VIS id="bar"></VIS>
+            <VIS_Bar id="bar"></VIS_Bar>
         </div>
-        <div id="description">
+        <div class="description">
             <h2>description</h2>
-            <div id="bar2"></div>
+            <VIS_IN id="bar_in"></VIS_IN>
         </div>
 
     </main>
@@ -119,7 +117,7 @@
     <script>
         vegaEmbed("#map", "map2/WORLD MAP.vg.json").catch(console.error);
         vegaEmbed("#bar", "bar chart/bar.vg.json").catch(console.error);
-        vegaEmbed("#bar2", "bar chart_2/bar.vg.json").catch(console.error);
+        vegaEmbed("#bar_in", "bar chart_2/bar.vg.json").catch(console.error);
         // Get the modal
         var modal = document.getElementById("myModal");
 
@@ -148,7 +146,8 @@
     </script>
 
     <footer>
-        © 2024 Australian Benficial Payment Data Visualization | Data sourced from NASA's MODIS
+        © 2024 Australian Beneficial Payment Data Visualization | Data sourced from the 
+        <a href="https://data.gov.au/data/dataset/dss-payment-demographic-data" target="_blank" style="color: #FFD700; text-decoration: none;">Australian Government's Department of Social Services</a>
     </footer>
 
 </body>

@@ -2,8 +2,7 @@
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "description": "Pie chart showing the distribution of Male, Female, and Other using external data.",
   
-  "width": 700,
-  "height": 750,
+  
   "params": [
     {
       
@@ -57,10 +56,13 @@
       }
     }
   ],
-
+  
   "hconcat": [
     
     {
+      "width":70,
+      "height":80,
+      
       "data": {
         "url": "https://raw.githubusercontent.com/hxuul/FIT3179-VIS-2/refs/heads/main/Pie%20Chart/Australian%20Capital%20Territory_data.csv"
       },
@@ -99,6 +101,8 @@
     },
     
     {
+      "width":70,
+      "height":80,
       "data": {
         "url": "https://raw.githubusercontent.com/hxuul/FIT3179-VIS-2/refs/heads/main/Pie%20Chart/Northern%20Territory_data.csv"
       },
@@ -136,6 +140,8 @@
       "title": "Northern Territory"
     },
     {
+      "width":70,
+      "height":80,
       "data": {
         "url": "https://raw.githubusercontent.com/hxuul/FIT3179-VIS-2/refs/heads/main/Pie%20Chart/Queensland_data.csv"
       },
@@ -174,6 +180,8 @@
     },
     
     {
+      "width":70,
+      "height":80,
       "data": {
         "url": "https://raw.githubusercontent.com/hxuul/FIT3179-VIS-2/refs/heads/main/Pie%20Chart/New%20South%20Wales_data.csv"
       },
@@ -211,6 +219,8 @@
       "title": "New South Wales"
     },
     {
+      "width":70,
+      "height":80,
       "data": {
         "url": "https://raw.githubusercontent.com/hxuul/FIT3179-VIS-2/refs/heads/main/Pie%20Chart/Australia_data.csv"
       },
@@ -248,6 +258,8 @@
       "title": "Australia"
     },
     {
+      "width":70,
+      "height":80,
       "data": {
         "url": "https://raw.githubusercontent.com/hxuul/FIT3179-VIS-2/refs/heads/main/Pie%20Chart/Victoria_data.csv"
       },
@@ -285,6 +297,8 @@
       "title": "Victoria"
     },
     {
+      "width":70,
+      "height":80,
       "data": {
         "url": "https://raw.githubusercontent.com/hxuul/FIT3179-VIS-2/refs/heads/main/Pie%20Chart/South%20Australia_data.csv"
       },
@@ -322,6 +336,8 @@
       "title": "South Australia"
     },
     {
+      "width":70,
+      "height":80,
       "data": {
         "url": "https://raw.githubusercontent.com/hxuul/FIT3179-VIS-2/refs/heads/main/Pie%20Chart/Tasmania_data.csv"
       },
@@ -360,6 +376,8 @@
     },
     
     {
+      "width":70,
+      "height":80,
       "data": {
         "url": "https://raw.githubusercontent.com/hxuul/FIT3179-VIS-2/refs/heads/main/Pie%20Chart/Western%20Australia_data.csv"
       },
@@ -397,11 +415,11 @@
       "title": "Western Australia"
     }
   ],
-  "config": { "title": { "font": "sans-serif", "fontSize": 16 },
-              "axis": {"labelFontSize": 9,"titleFontSize": 15},
+  "config": { "title": { "font": "sans-serif", "fontSize": 13 },
+              
               "padding": {
-              "left": 50,
-              "top": 50,
+              "left": 20,
+              "top": 20,
               "right": 50,
               "bottom": 50
               }

@@ -1,6 +1,6 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "width": 1500,
+  "width": "container",
   "height": 600,
   "title": {
     "text": "Payments by State in Australia, 2023"
