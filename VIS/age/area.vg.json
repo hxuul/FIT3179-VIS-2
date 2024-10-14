@@ -3,11 +3,23 @@
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "description": "Area chart showing the distribution of payment types across different age groups.",
   "data": {
-    "url": "https://raw.githubusercontent.com/hxuul/FIT3179-VIS-2/refs/heads/main/VIS/age/transformed_aging_data.csv"
+    "url": "https://raw.githubusercontent.com/hxuul/FIT3179-VIS-2/refs/heads/main/VIS/age/transformed_payment_data_filtered.csv"
   },
-  "width":2000,
+  "width":1000,
   "height":300,
   "mark": "area",
+  "params": [
+    {
+      "name": "age_highlight",
+      "select": {
+        "type": "point",
+        "fields": [
+          "Payment type"
+        ]
+      },
+      "bind": "legend"
+    }
+  ],
   "encoding": {
     "x": {
       "field": "Age Group", 
@@ -20,10 +32,24 @@
       "type": "quantitative",
       "title": "Count"
     },
+    
     "color": {
       "field": "Payment type", 
       "type": "nominal",
-      "title": "Payment Type"
+      "title": "Payment Type",
+      "sort": ["Age Pension", "Commonwealth Rent Assistance", "Pension Concession Card", "Other"],
+      "scale": {
+        "domain": ["Age Pension", "Commonwealth Rent Assistance", "Pension Concession Card", "Other"],
+        "range": ["#1f77b4", "#2ca02c", "#ff7f0e", "#9467bd"]
+      }
+    },
+
+    "opacity": {
+      "condition": {
+        "param": "age_highlight",
+        "value": 0.8
+      },
+      "value": 0.2
     },
     "tooltip": [
       {"field": "Payment type", "type": "nominal", "title": "Payment Type"},
