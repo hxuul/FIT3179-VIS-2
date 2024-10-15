@@ -29,7 +29,7 @@ h1 {
 }
 
 .description {
-  width: 27%;
+  width: 24%;
   max-width: 100%;
   padding: 0px;
   background-color: white;
@@ -48,6 +48,7 @@ VIS_Map {
   display: block;
   /* Remove extra spacing */
 }
+
 VIS_Bar {
   width: 15%;
   /* Make the map fill the container */
@@ -81,12 +82,35 @@ VIS_Map_2 {
   display: block;
   /* Remove extra spacing */
 }
+
 VIS_PIE {
-  width: 70%;
+  width: 20%;
+  /* Make the map fill the container */
+  height: 20%;
+  /* Maintain the aspect ratio */
+  max-width: 20%;
+  /* Ensure the map doesn't exceed the container width */
+  display: block;
+  /* Remove extra spacing */
+}
+
+VIS_Area {
+  width: 100%;
   /* Make the map fill the container */
   height: auto;
   /* Maintain the aspect ratio */
-  max-width: 70%;
+  max-width: 100%;
+  /* Ensure the map doesn't exceed the container width */
+  display: block;
+  /* Remove extra spacing */
+}
+
+VIS_Area2 {
+  width: 80%;
+  /* Make the map fill the container */
+  height: auto;
+  /* Maintain the aspect ratio */
+  max-width: 80%;
   /* Ensure the map doesn't exceed the container width */
   display: block;
   /* Remove extra spacing */
@@ -106,6 +130,7 @@ VIS_PIE {
 .zoom-label {
   padding-right: 10px;
 }
+
 /* Footer */
 footer {
   text-align: center;
@@ -114,16 +139,19 @@ footer {
   color: white;
   width: 100%;
   margin-top: 10px;
-  font-size: 14px;  /* Slightly smaller font for better readability */
+  font-size: 14px;
+  /* Slightly smaller font for better readability */
 }
 
 footer a {
-  color: #FFD700; /* Link color to stand out */
+  color: #FFD700;
+  /* Link color to stand out */
   text-decoration: none;
 }
 
 footer a:hover {
-  text-decoration: underline;  /* Add underline on hover for better UX */
+  text-decoration: underline;
+  /* Add underline on hover for better UX */
 }
 
 main {

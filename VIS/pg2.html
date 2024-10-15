@@ -25,35 +25,50 @@
   </header>
   <h1>Australian Benficial Payment Data Visualization</h1>
   <main>
+
+
+
+    <!-- The first vis -->
     <div id="vis-container">
-      <VIS_Map_2 id="map"></VIS_Map_2>
+      <VIS_Area id="area1"></VIS_Area>
 
     </div>
     <div class="description">
       <h2>description</h2>
 
-    
+
 
     </div>
 
+    <!-- The Second vis -->
+
+
+
+
+
+
+
+
+
+    <!-- The Third vis -->
     <div id="vis-container">
-      <VIS_PIE id="pie"></VIS_PIE>
+      <VIS_Area2 id="area2"></VIS_Area2>
     </div>
 
     <div class="description">
       <h2>description</h2>
 
-    
+
 
     </div>
-    
+
   </main>
 
 
   <!-- Embedding the Vega visualizations -->
   <script>
-    vegaEmbed("#map", "age/area.vg.json");
-    vegaEmbed("#pie", "age/area2.vg.json");
+    vegaEmbed("#area1", "age/area.vg.json");
+    vegaEmbed("#area2", "age/area2.vg.json");
 
   </script>
 

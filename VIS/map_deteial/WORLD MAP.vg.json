@@ -1,13 +1,10 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  
   "_comment": "this is the world map section",
   "width": 1000,
   "height": 500,
   "title": "Global Distribution of Social Service Payments per 10,000 Population",
-  
   "params": [
-    
     {
       "name": "zoom_level",
       "value": 30000,
@@ -21,59 +18,104 @@
     },
     {
       "name": "center_to",
-      "value": [145, -37.95],
+      "value": [
+        145,
+        -37.95
+      ],
       "bind": {
         "input": "select",
         "options": [
-          [151.2093, -33.8688],
-          [145, -37.95],        
-          [153.0251, -27.4698],  
-            
-          [138.6007, -34.9285],
-          [147.3240, -42.8806], 
-          [130.8456, -12.4634],  
-          [149.1310, -35.2809], 
-          [150.8931, -33.9258],
-          [153.4000, -28.0167],
-          [138.5957, -34.9261],
-          [147.3135, -42.8821],
-          [115.8589, -31.9503],
-          [146.7772, -19.2576],
-          [146.8000, -41.1667],
-          [150.7703, -23.3856],
-          [145.7700, -16.9186]
+          [
+            151.2093,
+            -33.8688
+          ],
+          [
+            145,
+            -37.95
+          ],
+          [
+            153.0251,
+            -27.4698
+          ],
+          [
+            138.6007,
+            -34.9285
+          ],
+          [
+            147.3240,
+            -42.8806
+          ],
+          [
+            130.8456,
+            -12.4634
+          ],
+          [
+            149.1310,
+            -35.2809
+          ],
+          [
+            150.8931,
+            -33.9258
+          ],
+          [
+            153.4000,
+            -28.0167
+          ],
+          [
+            138.5957,
+            -34.9261
+          ],
+          [
+            147.3135,
+            -42.8821
+          ],
+          [
+            115.8589,
+            -31.9503
+          ],
+          [
+            146.7772,
+            -19.2576
+          ],
+          [
+            146.8000,
+            -41.1667
+          ],
+          [
+            150.7703,
+            -23.3856
+          ],
+          [
+            145.7700,
+            -16.9186
+          ]
         ],
         "labels": [
-          "Sydney (NSW)", 
-          "Melbourne (VIC)", 
-          "Brisbane (QLD)", 
-          
-          "Adelaide (SA)", 
-          "Hobart (TAS)", 
-          "Darwin (NT)", 
-          "Canberra (ACT)", 
-          "Newcastle (NSW)", 
-          "Gold Coast (QLD)", 
-          "Greater Adelaide (SA)", 
-          "Greater Hobart (TAS)", 
-          "Greater Perth (WA)", 
-          "Townsville (QLD)", 
-          "Launceston (TAS)", 
-          "Rockhampton (QLD)", 
+          "Sydney (NSW)",
+          "Melbourne (VIC)",
+          "Brisbane (QLD)",
+          "Adelaide (SA)",
+          "Hobart (TAS)",
+          "Darwin (NT)",
+          "Canberra (ACT)",
+          "Newcastle (NSW)",
+          "Gold Coast (QLD)",
+          "Greater Adelaide (SA)",
+          "Greater Hobart (TAS)",
+          "Greater Perth (WA)",
+          "Townsville (QLD)",
+          "Launceston (TAS)",
+          "Rockhampton (QLD)",
           "Cairns (QLD)"
         ],
         "name": "Map Centre: "
       }
     }
-    
   ],
   "projection": {
-    "type": "equirectangular",
-    "center": {"expr": "center_to"},
-    "scale": {"expr": "zoom_level"}
+    "type": "equirectangular"
   },
   "layer": [
-    
     {
       "_comment": "Layer for background",
       "data": {
@@ -113,14 +155,16 @@
           "lookup": "properties.SA2_CODE21",
           "from": {
             "key": "SA2",
-            "fields": ["SA2","Total Count"],
+            "fields": [
+              "SA2",
+              "Total Count"
+            ],
             "data": {
               "url": "https://raw.githubusercontent.com/hxuul/FIT3179-VIS-2/refs/heads/main/VIS/map_deteial/Book3.csv",
               "format": {
                 "type": "csv"
               }
             }
-            
           }
         }
       ],
@@ -131,7 +175,6 @@
         "strokeWidth": {
           "value": 0.6
         },
-        
         "color": {
           "field": "Total Count",
           "type": "quantitative",
@@ -169,8 +212,6 @@
       }
     }
   ],
-    
-  
   "config": {
     "title": {
       "font": "sans-serif",

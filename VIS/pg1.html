@@ -17,7 +17,7 @@
     <nav class="links" style="--items: 5;">
       <a href="index.html">Global</a>
       <a href="pg1.html">Australian States</a>
-      <a href="#">State and Age</a>
+      <a href="pg2.html">State and Age</a>
       <a href="#">Link 4</a>
       <a href="#">Link 5</a>
       <span class="line"></span>
@@ -25,19 +25,38 @@
   </header>
   <h1>Australian Benficial Payment Data Visualization</h1>
   <main>
+
+    <!-- First -->
     <div id="vis-container">
       <VIS_Map_2 id="map"></VIS_Map_2>
 
     </div>
+
     <div class="description">
       <h2>description</h2>
+    </div>
 
-    
+
+    <!-- Second -->
+    <div id="vis-container">
+      <div id="map2"></div>
 
     </div>
 
+    <div class="description">
+      <h2>description</h2>
+    </div>
+
+
+
+
+    <!-- Third -->
     <div id="vis-container">
       <VIS_PIE id="pie"></VIS_PIE>
+    </div>
+
+    <div class="description">
+      <h2>description</h2>
     </div>
 
 
@@ -47,6 +66,7 @@
   <!-- Embedding the Vega visualizations -->
   <script>
     vegaEmbed("#map", "pg1/PAYMENT MAP.vg.json");
+    vegaEmbed("#map2", "map_deteial/WORLD MAP.vg.json");
     vegaEmbed("#pie", "Pie Chart/PIE.vg.json");
 
   </script>
